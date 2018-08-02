@@ -1,0 +1,42 @@
+<div class="container-fluid mt-2">
+  <div class="img" id="screen">
+    <div class="ir">Поле зрения камеры инфракрасного диапазона</div>
+    <div class="vis">Поле зрения камеры видимого диапазона</div>
+  </div>
+
+  <div>
+    <h2>Текущие данные</h2>
+    <div class="statistics">
+      Угол поворота НА ГС: {{ ((xPercentage - 50) / 50 * 5).toFixed(2) }}&deg;<br>
+      <small>
+        Управлять стрелками на клавиатуре <kbd>&larr;</kbd> <kbd class="ml-1">&rarr;</kbd>
+      </small>
+    </div>
+
+    <h2>Управление</h2>
+    <button class="btn btn-primary" (click)="play()" [ngClass]="{'btn-success': isPlaying}">
+      Поехали!
+    </button>
+    <button class="btn btn-primary ml-1" (click)="pause()" [ngClass]="{'btn-danger': !isPlaying}">
+      Пауза
+    </button>
+    <button class="btn btn-primary ml-1" (click)="stop()">
+      Стоп
+    </button>
+    <br>
+
+    <div class="angles">
+      <div>
+        Угловая скорость: <input class="form-control" type="text" [(ngModel)]="angSpeed">&deg;/с<br>
+      </div>
+      <div class="mt-2 mb-2">
+        Целевой угол: <input class="form-control" type="text" [(ngModel)]="angTarget">&deg;<br>
+      </div>
+      <div>
+        <button class="btn btn-primary" (click)="turn()">
+          {{ isTurning ? "Стоп" : "Крутим!" }}
+        </button><br>
+      </div>
+    </div>
+  </div>
+</div>
